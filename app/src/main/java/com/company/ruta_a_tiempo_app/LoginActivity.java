@@ -1,4 +1,4 @@
-package com.company.ruta_a_tiempo;
+package com.company.ruta_a_tiempo_app;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -33,8 +33,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -52,9 +63,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
+    /*private static final String[] DUMMY_CREDENTIALS = new String[]{
             "foo@example.com:hello", "bar@example.com:world"
-    };
+    };*/
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -68,28 +79,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean IsLogin;
 
+    //LocalizationsServices location = new LocalizationsServices();
+    AsyncHttpClient myClient = new AsyncHttpClient();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        //prefs.edit().putBoolean("IsLogin", IsLogin).apply(); // islogin is a boolean value of your login status
 
-        Log.d("You are NOT logged", "Bye!");
-        IsLogin = prefs.getBoolean("IsLogin", false); // get value of last login status
-        Log.d("Are you logged", String.valueOf(IsLogin));
+        Log.d("Prefers", String.valueOf(prefs));
 
-        if(IsLogin) {  // condition true means user is already login
-            Intent i = new Intent(this, MainActivity.class);
-            startActivityForResult(i, 1);
-            Log.d("You are logged", "HI!");
-        } else {
+        //IsLogin = prefs.getBoolean("IsLogin", false); // get value of last login status
+
+       // if(!IsLogin) {
+            // Set up the login form.
             mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
             populateAutoComplete();
 
             mPasswordView = (EditText) findViewById(R.id.password);
-            mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            /*mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                     if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -98,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     }
                     return false;
                 }
-            });
+            });*/
 
             Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
             mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -110,7 +120,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             mLoginFormView = findViewById(R.id.login_form);
             mProgressView = findViewById(R.id.login_progress);
-        }
+        /*} else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }*/
     }
 
     private void populateAutoComplete() {
@@ -175,23 +189,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Reset errors.
         mEmailView.setError(null);
-        mPasswordView.setError(null);
+        //mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        //String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        /*if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
-        }
+        }*/
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
@@ -212,31 +224,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            //mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(email);
             mAuthTask.execute((Void) null);
-            Log.v("User Status", "Logged");
-
-            Log.v("User Status", String.valueOf(IsLogin));
         }
-        /*IsLogin = prefs.getBoolean("IsLogin", false); // get value of last login status
-
-        if(IsLogin) {  // condition true means user is already login
-            Intent intent = new Intent(this, MainActivity.class);
-            Log.d("You are logged", "HI!");
-            startActivity(intent);
-            finish();
-        }*/
     }
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        //return email.contains("@");
+        return true;
     }
 
-    private boolean isPasswordValid(String password) {
+    /*private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
-    }
+        return true;
+    }*/
 
     /**
      * Shows the progress UI and hides the login form.
@@ -364,31 +368,39 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
-        private final String mPassword;
+        //private final String mPassword;
 
-        UserLoginTask(String email, String password) {
+        /*UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
+        }*/
+
+        UserLoginTask(String email) {
+            mEmail = email;
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-
+            RequestParams requestParams = new RequestParams();
+            requestParams.put("nickname", mEmail);
             try {
-                // Simulate network access.
-                Thread.sleep(2500);
-            } catch (InterruptedException e) {
+                //Simulate network access.
+                //Thread.sleep(2000);
+                LocalizationsServices services = new LocalizationsServices();
+                services.postLogin(mEmail);
+            } catch (JSONException jsonEx) {
+            //} catch (InterruptedException e, JSONException jsonEx) {
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
+            /*for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
-            }
+            }*/
 
             // TODO: register the new account here.
             return true;
@@ -404,12 +416,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 boolean IsLogin = true;
                 prefs.edit().putBoolean("IsLogin", IsLogin).apply(); // islogin is a boolean value of your login status
 
-                Log.d("Prefers", "IsLogin");
-                Log.v("Status", String.valueOf(IsLogin));
+                Log.v("Prefers", "IsLogin");
+                Log.d("Prefers", String.valueOf(IsLogin));
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
+                IsLogin = prefs.getBoolean("IsLogin", false); // get value of last login status
+
+                if(IsLogin) {
+                    Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(MainIntent);
+                    finish();
+                }
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

@@ -1,4 +1,4 @@
-package com.company.ruta_a_tiempo;
+package com.company.ruta_a_tiempo_app;
 
 import org.junit.Test;
 
