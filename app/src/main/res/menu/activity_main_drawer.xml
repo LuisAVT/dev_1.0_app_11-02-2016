@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/nav_camara"
+            android:icon="@drawable/ic_list_black_casi_48dp"
+            android:title="Rutas/Metro/Ecovía" />
+
+        <item android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_error_black_casi_48dp"
+            android:title="Reportar" />
+
+        <item android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_notifications_black_casi_48dp"
+            android:title="Notificaciones" />
+
+        <item android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_rate_review_black_casi_48dp"
+            android:title="Contribuye" />
+
+        <item android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share_black_casi_48dp"
+            android:title="Comparte Ruta@Tiempo" />
+
+        <item android:id="@+id/nav_cali"
+            android:icon="@drawable/ic_grade_black_casi_48dp"
+            android:title="Calificar" />
+
+        <item android:id="@+id/nav_confi"
+            android:icon="@drawable/ic_setting_light"
+            android:title="Configuración" />
+
+        <item android:id="@+id/nav_close"
+            android:icon="@drawable/ic_power_settings_new_black_casi_48dp"
+            android:title="Cerrar Sesión" />
+
+    </group>
+
+</menu>
