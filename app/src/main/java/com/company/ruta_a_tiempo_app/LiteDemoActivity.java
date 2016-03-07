@@ -1,16 +1,5 @@
 package com.company.ruta_a_tiempo_app;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolygonOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Build;
@@ -18,6 +7,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 /**
  * This demo shows some features supported in lite mode.
@@ -27,17 +22,47 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
  */
 public class LiteDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private static final LatLng BRISBANE = new LatLng(-27.47093, 153.0235);
+    /*Hda. Del Refugio Pte-Ote & Hda. Santa Martha
+    private static final LatLng PBMTY1333 = new LatLng(25.73637314,  -100.3925772);
 
-    private static final LatLng MELBOURNE = new LatLng(-37.81319, 144.96298);
+    Hda. Del Refugio Pte-Ote & Hda. San Nicolás
+    private static final LatLng PCMTY1334  = new LatLng(25.73507417, -100.3906368);
 
-    private static final LatLng SYDNEY = new LatLng(-33.87365, 151.20689);
+    Hda. Del Refugio Pte-Ote & Hda. Del Molino
+    private static final LatLng PSMTY1335 = new LatLng(25.73427757, -100.3885763);
 
-    private static final LatLng ADELAIDE = new LatLng(-34.92873, 138.59995);
+    Hda. El Molino Sur-Nte & Hda. Blanca
+    private static final LatLng PSMTY1336 = new LatLng(25.73506971, -100.3874768);
 
-    private static final LatLng PERTH = new LatLng(-31.952854, 115.857342);
+    Hda. El Molino Sur-Nte & Hda. Los Pinos
+    private static final LatLng PCMTY1337 = new LatLng(25.73628743, -100.3856738);
 
-    private static final LatLng DARWIN = new LatLng(-12.459501, 130.839915);
+    Hda. Los Pinos Pte-Ote & Seguridad Social
+    private static final LatLng PSMTY1338 = new LatLng(25.73566575, -100.3849789);
+
+    Comisión Tripartita Pte-Ote & Seguridad Social
+    private static final LatLng PSMTY0824 = new LatLng(25.7352947, -100.3845871);
+
+    Comisión Tripartita Pte-Ote & Titanio
+    private static final LatLng PSMTY0825 = new LatLng(25.73365377, -100.3829025);
+
+    Comisión Tripartita Pte-Ote & Uranio
+    private static final LatLng PCMTY0826 = new LatLng(25.73292558, -100.3821128);
+
+    1  De Mayo  Sur-Nte & Comisión Tripartita
+    private static final LatLng PSMTY0038 = new LatLng(25.73223098, -100.3808482);
+
+    1  De Mayo  Sur-Nte & Ave. De La Unidad
+    private static final LatLng PSMTY0039 = new LatLng(25.73309586, -100.379377);
+
+    1  De Mayo  Sur-Nte & Ruiz Cortines  (40 Mt. Antes)
+    private static final LatLng PSMTY0040 = new LatLng(25.73473982, -100.3778059);
+
+    A. Ruiz Cortines Pte-Ote & Tórtola (Fte)
+    private static final LatLng PSMTY0184 = new LatLng(25.73398542, -100.3766555);
+
+    A. Ruiz Cortines Pte-Ote & Ave. De La Unidad / Gaviota
+    private static final LatLng PBMTY0185 = new LatLng(25.73327642 , -100.3757373);*/
 
     /**
      * A Polygon with five points in the Norther Territory, Australia.
@@ -72,7 +97,7 @@ public class LiteDemoActivity extends AppCompatActivity implements OnMapReadyCal
         }
 
         // Center camera on Adelaide marker
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DARWIN, 10f));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(DARWIN, 10f));
     }
 
     /**
@@ -85,7 +110,7 @@ public class LiteDemoActivity extends AppCompatActivity implements OnMapReadyCal
         }
 
         // Center camera on Adelaide marker
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ADELAIDE, 10f));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ADELAIDE, 10f));
     }
 
     /**
@@ -100,16 +125,16 @@ public class LiteDemoActivity extends AppCompatActivity implements OnMapReadyCal
         }
 
         // Create bounds that include all locations of the map
-        LatLngBounds.Builder boundsBuilder = LatLngBounds.builder()
+        /*LatLngBounds.Builder boundsBuilder = LatLngBounds.builder()
                 .include(PERTH)
                 .include(ADELAIDE)
                 .include(MELBOURNE)
                 .include(SYDNEY)
                 .include(DARWIN)
-                .include(BRISBANE);
+                .include(BRISBANE);*/
 
         // Move camera to show all markers and locations
-        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 20));
+       // mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 20));
     }
 
     /**
@@ -145,10 +170,10 @@ public class LiteDemoActivity extends AppCompatActivity implements OnMapReadyCal
      * Territory (Australia).
      */
     private void addPolyobjects() {
-        mMap.addPolyline((new PolylineOptions())
+        /*mMap.addPolyline((new PolylineOptions())
                 .add(MELBOURNE, ADELAIDE, PERTH)
                 .color(Color.GREEN)
-                .width(5f));
+                .width(5f));*/
 
         mMap.addPolygon(new PolygonOptions()
                 .add(POLYGON)
@@ -161,7 +186,7 @@ public class LiteDemoActivity extends AppCompatActivity implements OnMapReadyCal
      * Add Markers with default info windows to the map.
      */
     private void addMarkers() {
-        mMap.addMarker(new MarkerOptions()
+        /*mMap.addMarker(new MarkerOptions()
                 .position(BRISBANE)
                 .title("Brisbane"));
 
@@ -183,6 +208,31 @@ public class LiteDemoActivity extends AppCompatActivity implements OnMapReadyCal
         mMap.addMarker(new MarkerOptions()
                 .position(PERTH)
                 .title("Perth")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));*/
+
+        /*mMap.addMarker(new MarkerOptions()
+                .position(PBMTY1333)
+                .title("Hda. Del Refugio Pte-Ote & Hda. Santa Martha")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_icon_android_map)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PCMTY1334)
+                .title("Hda. Del Refugio Pte-Ote & Hda. San Nicolás")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_icon_android_map)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY1335)
+                .title("Hda. Del Refugio Pte-Ote & Hda. Del Molino")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_icon_android_map)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY1336)
+                .title("Hda. El Molino Sur-Nte & Hda. Blanca")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_icon_android_map)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PCMTY1337)
+                .title("Hda. El Molino Sur-Nte & Hda. Los Pinos")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_icon_android_map)));*/
     }
 }

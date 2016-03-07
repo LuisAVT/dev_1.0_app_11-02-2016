@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,15 +18,18 @@ import android.widget.AutoCompleteTextView;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener {
+public class MapsActivity extends AppCompatActivity
+                                        implements OnMapReadyCallback,
+                                        NavigationView.OnNavigationItemSelectedListener {
 
     private GoogleMap mMap;
     private GPSTracker gps;
@@ -43,11 +45,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     private GoogleApiClient client;
 
+    private static final LatLng PBMTY1333 = new LatLng(25.73637314,  -100.3925772);
+    private static final LatLng PCMTY1334  = new LatLng(25.73507417, -100.3906368);
+    private static final LatLng PSMTY1335 = new LatLng(25.73427757, -100.3885763);
+    private static final LatLng PSMTY1336 = new LatLng(25.73506971, -100.3874768);
+    private static final LatLng PCMTY1337 = new LatLng(25.73628743, -100.3856738);
+    private static final LatLng PSMTY1338 = new LatLng(25.73566575, -100.3849789);
+    private static final LatLng PSMTY0824 = new LatLng(25.7352947, -100.3845871);
+    private static final LatLng PSMTY0825 = new LatLng(25.73365377, -100.3829025);
+    private static final LatLng PCMTY0826 = new LatLng(25.73292558, -100.3821128);
+    private static final LatLng PSMTY0038 = new LatLng(25.73223098, -100.3808482);
+    private static final LatLng PSMTY0039 = new LatLng(25.73309586, -100.379377);
+    private static final LatLng PSMTY0040 = new LatLng(25.73473982, -100.3778059);
+    private static final LatLng PSMTY0184 = new LatLng(25.73398542, -100.3766555);
+    private static final LatLng PBMTY0185 = new LatLng(25.73327642 , -100.3757373);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,10 +80,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent markerDemo = new Intent(MapsActivity.this, MarkerDemoActivity.class);
-                //Intent markerDemo = new Intent(MapsActivity.this, LiteListDemoActivity.class);
-                Intent howToGo = new Intent(MapsActivity.this, HowToGoActivity.class);
-                startActivity(howToGo);
+                //Intent markerDemo = new Intent(MapsActivity.this, MarkerDemoActivity.class);
+                Intent markerDemo = new Intent(MapsActivity.this, LiteListDemoActivity.class);
+                //Intent howToGo = new Intent(MapsActivity.this, HowToGoActivity.class);
+                startActivity(markerDemo);
                 finish();
             }
         });
@@ -116,6 +132,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -188,7 +206,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             latitude = gps.getLatitude();
             longitude = gps.getLongitude();
 
-            // \n is for new line
             //Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
         } else {
             // can't get location
@@ -196,11 +213,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // Ask user to enable GPS/network in settings
             gps.showSettingsAlert();
         }
-
-        // Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         LatLng myLocation = new LatLng(latitude, longitude);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, mMap.getMaxZoomLevel() - 4));
@@ -218,11 +230,56 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
         }*/
 
-
+        addMarkers();
         //mMap.addMarker(new MarkerOptions().position(myLocation).title("My Actual Location").icon(BitmapDescriptorFactory.fromResource(R.drawable.cast_ic_notification_0)));
 
         mUiSettings.isCompassEnabled();
         mUiSettings.isMapToolbarEnabled();
+
+
+
+
+
+        /*TextView output = (TextView) findViewById(R.id.textView1);
+        String strJson="
+        {
+            \"Employee\" :[
+            {
+                \"id\":\"01\",
+                \"name\":\"Gopal Varma\",
+                \"salary\":\"500000\"
+            },
+            {
+                \"id\":\"02\",
+                \"name\":\"Sairamkrishna\",
+                \"salary\":\"500000\"
+            },
+            {
+                \"id\":\"03\",
+                \"name\":\"Sathish kallakuri\",
+                \"salary\":\"600000\"
+            }
+            ]
+        }";*/
+        /*String data = "";
+        try {
+            JSONObject  jsonRootObject = new JSONObject(strJson);
+
+            //Get the instance of JSONArray that contains JSONObjects
+            JSONArray jsonArray = jsonRootObject.optJSONArray("Employee");
+
+            //Iterate the jsonArray and print the info of JSONObjects
+            for(int i=0; i < jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                int id = Integer.parseInt(jsonObject.optString("id").toString());
+                String name = jsonObject.optString("name").toString();
+                float salary = Float.parseFloat(jsonObject.optString("salary").toString());
+
+                data += "Node"+i+" : \n id= "+ id +" \n Name= "+ name +" \n Salary= "+ salary +" \n ";
+            }
+            output.setText(data);
+        } catch (JSONException e) {e.printStackTrace();}*/
     }
 
     @Override
@@ -273,5 +330,79 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+    }
+
+    /**
+     * Add Markers with default info windows to the map.
+     **/
+    private void addMarkers() {
+        mMap.addMarker(new MarkerOptions()
+                .position(PBMTY1333)
+                .title("Hda. Del Refugio Pte-Ote & Hda. Santa Martha")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PCMTY1334)
+                .title("Hda. Del Refugio Pte-Ote & Hda. San Nicolás")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY1335)
+                .title("Hda. Del Refugio Pte-Ote & Hda. Del Molino")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY1336)
+                .title("Hda. El Molino Sur-Nte & Hda. Blanca")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PCMTY1337)
+                .title("Hda. El Molino Sur-Nte & Hda. Los Pinos")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY1338)
+                .title("Hda. Los Pinos Pte-Ote & Seguridad Social")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY0824)
+                .title("Comisión Tripartita Pte-Ote & Seguridad Social")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY0825)
+                .title("Comisión Tripartita Pte-Ote & Titanio"));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PCMTY0826)
+                .title("1  De Mayo  Sur-Nte & Comisión Tripartita")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY0038)
+                .title("1  De Mayo  Sur-Nte & Comisión Tripartita")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY0039)
+                .title("1  De Mayo  Sur-Nte & Ave. De La Unidad")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY0040)
+                .title("1  De Mayo  Sur-Nte & Ruiz Cortines  (40 Mt. Antes)")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PSMTY0184)
+                .title("A. Ruiz Cortines Pte-Ote & Tórtola (Fte)")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+
+        mMap.addMarker(new MarkerOptions()
+                .position(PBMTY0185)
+                .title("A. Ruiz Cortines Pte-Ote & Ave. De La Unidad / Gaviota")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
     }
 }

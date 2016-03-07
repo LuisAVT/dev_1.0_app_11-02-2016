@@ -414,6 +414,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
                 boolean IsLogin = true;
                 prefs.edit().putBoolean("IsLogin", IsLogin).apply(); // islogin is a boolean value of your login status
 

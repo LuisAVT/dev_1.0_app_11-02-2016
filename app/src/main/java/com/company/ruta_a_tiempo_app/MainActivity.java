@@ -1,33 +1,24 @@
 package com.company.ruta_a_tiempo_app;
 
-import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+
 //import android.widget.Toast;
-
-import com.loopj.android.http.AsyncHttpClient;
 //import com.loopj.android.http.AsyncHttpRequest;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 //import com.loopj.android.http.RequestHandle;
-import com.loopj.android.http.RequestParams;
 //import com.loopj.android.http.ResponseHandlerInterface;
-
 /*import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
@@ -35,10 +26,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;*/
-
-import org.json.JSONException;
-
-import cz.msebera.android.httpclient.Header;
 /*import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.client.methods.HttpUriRequest;
 import cz.msebera.android.httpclient.entity.StringEntity;
@@ -61,8 +48,8 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -75,8 +62,6 @@ public class MainActivity extends AppCompatActivity  {
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());

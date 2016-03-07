@@ -64,8 +64,7 @@ public class LiteListDemoActivity extends AppCompatActivity {
         public MapAdapter(Context context, NamedLocation[] locations) {
             super(context, R.layout.lite_list_demo_row, R.id.lite_listrow_text, locations);
         }
-
-
+        
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View row = convertView;
