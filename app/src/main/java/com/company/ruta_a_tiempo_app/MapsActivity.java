@@ -217,14 +217,15 @@ public class MapsActivity extends AppCompatActivity
         LatLng myLocation = new LatLng(latitude, longitude);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, mMap.getMaxZoomLevel() - 4));
         mMap.setMyLocationEnabled(true);
+        //mMap.setPadding();
         mMap.setBuildingsEnabled(true);
 
         mUiSettings=mMap.getUiSettings();
         mUiSettings.setCompassEnabled(true);
         mUiSettings.setTiltGesturesEnabled(true);
-        mUiSettings.setMapToolbarEnabled(true);
+        mUiSettings.setMapToolbarEnabled(false);
         mUiSettings.setMyLocationButtonEnabled(true);
-        //mUiSettings.setZoomControlsEnabled(true);
+        mUiSettings.setZoomControlsEnabled(true);
 
         /*if ( getactualLocation <> myLocation) {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
@@ -373,36 +374,37 @@ public class MapsActivity extends AppCompatActivity
 
         mMap.addMarker(new MarkerOptions()
                 .position(PSMTY0825)
-                .title("Comisión Tripartita Pte-Ote & Titanio"));
+                .title("Comisión Tripartita Pte-Ote & Titanio")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
 
         mMap.addMarker(new MarkerOptions()
                 .position(PCMTY0826)
                 .title("1  De Mayo  Sur-Nte & Comisión Tripartita")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
 
         mMap.addMarker(new MarkerOptions()
                 .position(PSMTY0038)
                 .title("1  De Mayo  Sur-Nte & Comisión Tripartita")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
 
         mMap.addMarker(new MarkerOptions()
                 .position(PSMTY0039)
                 .title("1  De Mayo  Sur-Nte & Ave. De La Unidad")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
 
         mMap.addMarker(new MarkerOptions()
                 .position(PSMTY0040)
-                .title("1  De Mayo  Sur-Nte & Ruiz Cortines  (40 Mt. Antes)")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                .title("1  De Mayo  Sur-Nte & Ruiz Cortines(40 Mt. Antes)")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
 
         mMap.addMarker(new MarkerOptions()
                 .position(PSMTY0184)
-                .title("A. Ruiz Cortines Pte-Ote & Tórtola (Fte)")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                .title("A. Ruiz Cortines Pte-Ote & Tórtola(Fte)")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
 
         mMap.addMarker(new MarkerOptions()
                 .position(PBMTY0185)
-                .title("A. Ruiz Cortines Pte-Ote & Ave. De La Unidad / Gaviota")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                .title("A. Ruiz Cortines Pte-Ote & Ave. De La Unidad/Gaviota")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_stop)));
     }
 }

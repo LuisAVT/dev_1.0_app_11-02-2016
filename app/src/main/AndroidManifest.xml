@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:label="Ruta@Tiempo"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,11 +47,11 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyBgrXEceU1ye08I31Sss6dysThwIJFJohg" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"
+            android:label="Ruta@Tiempo"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -74,7 +74,7 @@
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".HowToGoActivity"
-            android:label="@string/title_activity_how_to_gp"></activity>
+            android:label="@string/title_activity_how_to_gp"/>
         <activity
             android:name=".RMEActivity"
             android:label="@string/title_activity_rme"
