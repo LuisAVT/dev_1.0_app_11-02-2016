@@ -217,6 +217,7 @@
     <string name="title_activity_how_to_gp">Map</string>
 
     <!-- Report Activity-->
+    <string name="Reports_activity">Reportar</string>
     <string-array name="Report_Type">
         <item>Accidente</item>
         <item>Asalto</item>

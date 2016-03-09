@@ -149,7 +149,7 @@ public class MapsActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-            Intent FavsActivity = new Intent(MapsActivity.this, FavsActivity.class);
+            Intent FavsActivity = new Intent(MapsActivity.this, ReportsActivity.class);
             startActivity(FavsActivity);
 
         } else if (id == R.id.nav_slideshow) {
@@ -225,7 +225,7 @@ public class MapsActivity extends AppCompatActivity
         mUiSettings.setTiltGesturesEnabled(true);
         mUiSettings.setMapToolbarEnabled(false);
         mUiSettings.setMyLocationButtonEnabled(true);
-        mUiSettings.setZoomControlsEnabled(true);
+        mUiSettings.setZoomControlsEnabled(false);
 
         /*if ( getactualLocation <> myLocation) {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));

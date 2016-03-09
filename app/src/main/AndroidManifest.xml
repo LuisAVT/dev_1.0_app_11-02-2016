@@ -47,7 +47,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBgrXEceU1ye08I31Sss6dysThwIJFJohg" />
+            android:value="AIzaSyAIttMBRZzuDeKIEvHacoQUkfUoIFYdHyw" />
 
         <activity
             android:name=".MapsActivity"
@@ -84,8 +84,8 @@
                 android:value=".MapsActivity" />
         </activity>
         <activity
-            android:name=".FavsActivity"
-            android:label="@string/favs"
+            android:name=".ReportsActivity"
+            android:label="@string/Reports_activity"
             android:parentActivityName=".MapsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
