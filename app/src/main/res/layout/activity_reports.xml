@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
 
-    tools:context="rutadirectav1.com.rutadirectav1.SettingsActivity"
+    tools:context=".ReportsActivity"
     android:orientation="vertical">
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        >
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tus reportes serán enviados directamente a la Agencia Estatal de Transporte"
+            android:text="@string/title_rep"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold" />
-
-    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -33,226 +38,244 @@
         android:layout_marginBottom="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingTop="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="¿Qué te gustaría reportar?"
+            android:text="@string/rep_type"
             android:textColor="#c7000000"
             android:textSize="18sp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="40dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="1dp"
-            android:id="@+id/textView5" />
+            android:id="@+id/textreptype" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView3"
-            android:src="@drawable/ic_pin_drop_black_24dp"
+            android:id="@+id/imgreptype"
+            android:src="@drawable/ic_report_black_24dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="0dp" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerrep"
             android:clickable="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="40dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="20dp" />
 
 
+        <TextView
+            android:id="@+id/textreproute"
+            android:layout_below="@+id/spinnerrep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rep_route"
+            android:textColor="#c7000000"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp" />
+
+        <EditText
+            android:id="@+id/editreproute"
+            android:layout_below="@+id/textreproute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reproute_hint"
+            android:layout_marginLeft="40dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgreproute"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_list_black_24dp"
+            android:layout_alignTop="@+id/textreproute" />
+
+
+        <TextView
+            android:id="@+id/textrepunit"
+            android:layout_below="@+id/editreproute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rep_unit"
+            android:textColor="#c7000000"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/editrepunit"
+            android:layout_below="@+id/textrepunit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/repunit_hint"
+            android:layout_marginLeft="40dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgrepunit"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_directions_bus_black_24dp"
+            android:layout_alignTop="@+id/textrepunit" />
+
+        <TextView
+            android:id="@+id/textrepdate"
+            android:layout_below="@+id/editrepunit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rep_date"
+            android:textColor="#c7000000"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/editrepdate"
+            android:layout_below="@+id/textrepdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/repdate_hint"
+            android:layout_marginLeft="40dp"
+            android:inputType="date"
+            android:textSize="18sp"
+            android:focusableInTouchMode="true" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgrepdate"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_event_black_24dp"
+            android:layout_alignTop="@+id/textrepdate" />
+
+        <TextView
+            android:id="@+id/textreptime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rep_time"
+            android:textColor="#c7000000"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/editrepdate" />
+
+        <EditText
+            android:id="@+id/editreptime"
+            android:layout_below="@+id/textreptime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/reptime_hint"
+            android:layout_marginLeft="40dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgreptime"
+            android:layout_alignTop="@+id/textreptime"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_schedule_black_24dp" />
+
+        <TextView
+            android:id="@+id/textrepoper"
+            android:layout_below="@+id/editreptime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rep_driver"
+            android:textColor="#c7000000"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/editrepoper"
+            android:layout_below="@+id/textrepoper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/repdriver_hint"
+            android:layout_marginLeft="40dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgrepoper"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:layout_alignTop="@+id/textrepoper" />
+
+
+        <TextView
+            android:id="@+id/textrepdetails"
+            android:layout_below="@+id/editrepoper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rep_details"
+            android:textColor="#c7000000"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/editrepdetails"
+            android:layout_below="@+id/textrepdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/repdetails_hint"
+            android:layout_marginLeft="40dp"
+            android:inputType="textMultiLine|textLongMessage" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgrepdetails"
+            android:layout_alignTop="@+id/textrepdetails"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_comment_black_24dp" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabreport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="#0074D9"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_send_white_24dp"
+            android:layout_margin="0dp"
+            android:layout_below="@+id/editrepdetails"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="false" />
+
+
+
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¿En qué ruta?"
-            android:textColor="#c7000000"
-            android:textSize="18sp"/>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tu Respuesta"/>
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¿En qué unidad?"
-            android:textColor="#c7000000"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tu Respuesta"/>
+    </android.support.v4.widget.NestedScrollView>
 
 
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¿Cuándo pasó?"
-            android:textColor="#c7000000"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tu Respuesta"/>
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¿A qué hora pasó?"
-            android:textColor="#c7000000"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tu Respuesta"/>
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¿Cuál es el nombre del operador?"
-            android:textColor="#c7000000"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tu Respuesta"/>
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dános más detalles: "
-            android:textColor="#c7000000"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tu Respuesta"/>
-
-
-
-    </LinearLayout>
-
-    <ImageButton
-        android:layout_marginTop="30dp"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:src="@drawable/ic_send_black_24dp"
-
-        android:layout_marginLeft="300dp"/>
-
-
-
-    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
 
 

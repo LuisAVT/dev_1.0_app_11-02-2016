@@ -218,6 +218,22 @@
 
     <!-- Report Activity-->
     <string name="Reports_activity">Reportar</string>
+    <string name="select_dates">Fecha</string>
+    <string name="title_rep">Tus reportes serán enviados directamente a la Agencia Estatal de Transporte</string>
+    <string name="rep_type">¿Qué te gustaría reportar?</string>
+    <string name="rep_route">¿En qué ruta?</string>
+    <string name="reproute_hint">Ingresa la ruta</string>
+    <string name="rep_unit">¿En qué unidad?</string>
+    <string name="repunit_hint">Ingresa el número de unidad</string>
+    <string name="rep_date">¿Cuándo pasó?</string>
+    <string name="repdate_hint">Selecciona una fecha</string>
+    <string name="rep_time">¿A qué hora pasó?</string>
+    <string name="reptime_hint">Selecciona una hora</string>
+    <string name="rep_driver">¿Cuál es el nombre del operador?</string>
+    <string name="repdriver_hint">Ingresa el nombre del operador</string>
+    <string name="rep_details">Dános más detalles/comentarios: </string>
+    <string name="repdetails_hint">Ingresa todos tus detalles/comentarios</string>
+
     <string-array name="Report_Type">
         <item>Accidente</item>
         <item>Asalto</item>
